@@ -7,7 +7,7 @@ interface Props {
 
 const PrefecturePicker: React.FC<Props> = ({ prefectures, onClick }) => (
   <div>
-    <h2 style={{marginLeft: "20pt"}}>都道府県</h2>
+    <h2 style={{ marginLeft: '20pt' }}>都道府県</h2>
     <ul
       style={{
         listStyle: 'none',

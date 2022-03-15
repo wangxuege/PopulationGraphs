@@ -44,16 +44,11 @@ const Graph: React.FC<Props> = ({ populations }) => {
         text: '人口数',
       },
     },
-    legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle',
-    },
     series: series.length === 0 ? [{ type: 'line', name: '都道府県名', data: [] }] : series,
   }
 
   return (
-    <div style={{ width: '85%', margin: '0 auto', paddingTop : "60px"}}>
+    <div style={{ width: '85%', margin: '0 auto', paddingTop: '60px' }}>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   )

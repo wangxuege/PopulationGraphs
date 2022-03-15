@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Graph from './components/Graph'
@@ -19,9 +18,9 @@ type FetchedPops = {
   message: null
   result: {
     boundaryYear: number
-    data:{
+    data: {
       label: string
-      data:{
+      data: {
         year: string
         value: number
       }[]
@@ -73,9 +72,9 @@ const App = () => {
             { headers: { 'X-API-KEY': apiKey } }
           )
           newActivePrefecture.push({
-            prefName : prefecture.prefName,
-            prefCode : prefecture.prefCode,
-            data : res.data.result.data[0].data
+            prefName: prefecture.prefName,
+            prefCode: prefecture.prefCode,
+            data: res.data.result.data[0].data,
           })
           setActivePrefectures(newActivePrefecture)
         } catch (error) {
@@ -90,7 +89,7 @@ const App = () => {
     <div>
       <Title />
       {prefectures ? <PrefecturePicker prefectures={prefectures.result} onClick={onPrefectureClick} /> : 'Loading...'}
-      <Graph populations={activePrefectures}/>
+      <Graph populations={activePrefectures} />
     </div>
   )
 }
