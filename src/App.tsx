@@ -1,5 +1,7 @@
+
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import Graph from './components/Graph'
 import PrefecturePicker from './components/PrefecturePicker'
 import Title from './components/Title'
 
@@ -20,7 +22,7 @@ type FetchedPops = {
     data:{
       label: string
       data:{
-        year: number
+        year: string
         value: number
       }[]
     }[]
@@ -31,7 +33,7 @@ type Data = {
   prefName: string
   prefCode: number
   data: {
-    year: number
+    year: string
     value: number
   }[]
 }
@@ -83,12 +85,12 @@ const App = () => {
       void fetchPopulations()
     }
   }
-  console.log(activePrefectures)
 
   return (
     <div>
       <Title />
       {prefectures ? <PrefecturePicker prefectures={prefectures.result} onClick={onPrefectureClick} /> : 'Loading...'}
+      <Graph populations={activePrefectures}/>
     </div>
   )
 }
