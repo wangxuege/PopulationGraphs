@@ -21,7 +21,7 @@ module.exports = {
     project: ['./tsconfig.json'],
   },
   plugins: ['react', '@typescript-eslint', 'unused-imports'],
-  ignorePatterns: ['.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js','build/'],
   rules: {
     'no-alert': 'off',
     'no-use-before-define': 'off',
