@@ -1,8 +1,14 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import PrefecturePicker from './components/PrefecturePicker'
 import Title from './components/Title'
 
-type PrefData = {
+export interface Prefecture {
+  prefCode: number
+  prefName: string
+}
+
+type Prefectures = {
   message: null
   result: {
     prefCode: number
@@ -14,13 +20,13 @@ const url = 'https://opendata.resas-portal.go.jp/api'
 const apiKey = process.env.REACT_APP_RESAS_APIKEY || ''
 
 const App = () => {
-  const [prefectures, setPrefectures] = useState<PrefData | null>(null)
+  const [prefectures, setPrefectures] = useState<Prefectures | null>(null)
 
   // 都道府県名を取得
   useEffect(() => {
     const fetchPrefectures = async () => {
       try {
-        const res = await axios.get<PrefData>(`${url}/v1/prefectures`, { headers: { 'X-API-KEY': apiKey } })
+        const res = await axios.get<Prefectures>(`${url}/v1/prefectures`, { headers: { 'X-API-KEY': apiKey } })
         setPrefectures(res.data)
       } catch (error) {
         alert('データ取得失敗')
@@ -29,11 +35,10 @@ const App = () => {
     void fetchPrefectures()
   }, [])
 
-  console.log(prefectures)
-
   return (
     <div>
       <Title />
+      {prefectures ? <PrefecturePicker prefectures = {prefectures.result}/> :  'Loading...'}
     </div>
   )
 }
